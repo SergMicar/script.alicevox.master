@@ -1,0 +1,11 @@
+v2.0.0 (10.06.2019)
+- Refactoring. Add urllib2 http post request after incoming event & http exception handler
+
+v1.0.6 (2018)
+- Fix some bugs. Release
+
+v1.0.4
+- New wav: welcome, ringtone, incall, callend, batlow, Sincall, Eincall, Sbatlow, Ebatlow, STOP
+
+v0.0.1
+- Init
