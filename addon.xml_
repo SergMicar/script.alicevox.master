@@ -18,7 +18,13 @@
     <website>https://mjdm.ru/forum/viewtopic.php?f=5&t=2893&start=120</website>
     <email>Sergey.V.Goncharov@gmail.com</email>
     <source>https://github.com/SergMicar/KODIAliceVox</source>
-    <news>v2.0.0 (10.06.2019)
+    <news>v2.0.1 (26.09.2019)
+      [new]- add "ping" параметр, теперь:
+      welcome, incall, callend, batlow останавливают текущего воспроизведения файла
+      ping, ringtone не останавливают текущего воспроизведения файла
+      STOP - команда "остановить текущее воспроизведение
+	 
+	v2.0.0 (10.06.2019)
 	  [new] Refactoring
       [new] Add urllib2 http post request after incoming event & http exception handler
       [fix] some fix
