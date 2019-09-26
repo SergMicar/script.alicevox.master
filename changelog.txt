@@ -1,3 +1,9 @@
+v2.0.1 (26.09.2019)
+- add ping:
+      welcome, incall, callend, batlow останавливают текущего воспроизведения файла
+      ping, ringtone не останавливают текущего воспроизведения файла
+      STOP - команда "остановить текущее воспроизведение
+
 v2.0.0 (10.06.2019)
 - Refactoring. Add urllib2 http post request after incoming event & http exception handler
 

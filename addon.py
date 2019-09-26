@@ -1,5 +1,4 @@
 import os
-#import os.path //для проверки наличия файла по http
 import sys
 import time
 import urlparse
@@ -133,8 +132,9 @@ else:
 #xbmc.LOGSEVERE = 5
 #xbmc.LOGFATAL = 6
 #xbmc.LOGNONE = 7
-try: 
-	response = opener.open(url, data=data).read() #perform operations
+try:
+#	response = opener.open(url, data=data).read() #perform operations
+    pass
 except urllib2.HTTPError, e:
 	xbmc.log('HTTPError = ' + str(e.code), 3)
 	dialog.ok(addonname+': HTTPError', 'Failed to connect '+url, str(e.code))
