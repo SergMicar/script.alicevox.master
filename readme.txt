@@ -13,8 +13,12 @@ http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Ad
 
 http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["ringtone"]},"id":1}
 
-Возможные значения: welcome, ringtone, incall, callend, batlow, Sincall, Eincall, Sbatlow, Ebatlow, STOP
-при этом при передаче параметра STOP - остановить текущее воспроизведение
+Возможные значения: ping, ringtone, welcome, incall, callend, batlow, STOP
+при этом:
+welcome, incall, callend, batlow останавливают текущего воспроизведения файла
+ping, ringtone не останавливают текущего воспроизведения файла
+STOP - команда "остановить текущее воспроизведение"
+
 
 Вывод сообщения:
 http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["MESSAGE", "SmartHome Alice", "Ïðîâåðêà ïîäêëþ÷åíèÿ"]},"id":1}
@@ -33,3 +37,6 @@ mdm=стандартная картинка, вместо "mdm" может бы�
 xbmc:xbmc - логин и пароль к KODI
 192.168.1.51 - KODI
 192.168.1.2 - удаленный сервер с хостингом картинок (например MDM)
+
+P.S.
+Для Terminals2 пинговать так: http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["ping"]},"id":1}

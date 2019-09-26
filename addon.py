@@ -1,5 +1,5 @@
 import os
-import os.path
+#import os.path //для проверки наличия файла по http
 import sys
 import time
 import urlparse
@@ -72,9 +72,7 @@ if len(sys.argv) == 2:
 			xbmc.executebuiltin('XBMC.Notification(TTS arrived, trying to say it...)')
 			xbmc.playSFX(sys.argv[1])
 		elif sys.argv[1] == "ping":
-			play()
-			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "WELCOME")')
-			xbmc.playSFX(SOUND_WELCOME)
+			pass
 		elif sys.argv[1] == "ringtone":
 			play()
 			xbmc.executebuiltin('XBMC.Notification(Built-in sound called, "RINGTONE")')
