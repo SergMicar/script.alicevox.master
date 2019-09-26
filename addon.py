@@ -1,4 +1,5 @@
 import os
+import os.path
 import sys
 import time
 import urlparse
@@ -36,10 +37,6 @@ SOUND_RINGTONE = os.path.join(addon_dir, 'resources', 'media', "ringtone.wav")
 SOUND_INCALL = os.path.join(addon_dir, 'resources', 'media', "incall.wav")
 SOUND_CALLEND = os.path.join(addon_dir, 'resources', 'media', "callend.wav")
 SOUND_BATLOW = os.path.join(addon_dir, 'resources', 'media', "batlow.wav")
-SOUND_SINCALL = os.path.join(addon_dir, 'resources', 'media', "Sincall.wav")
-SOUND_EINCALL = os.path.join(addon_dir, 'resources', 'media', "Eincall.wav")
-SOUND_SBATLOW = os.path.join(addon_dir, 'resources', 'media', "Sbatlow.wav")
-SOUND_EBATLOW = os.path.join(addon_dir, 'resources', 'media', "Ebatlow.wav")
 
 dialog = xbmcgui.Dialog()
 
@@ -67,14 +64,14 @@ def pause():
 #--MAIN--
 if len(sys.argv) == 2:
 	xbmc.enableNavSounds(True)
-	xbmc.stopSFX()
 	
 	if sys.argv[1] != "MESSAGE":
 		if "/cms/cached/voice/" in sys.argv[1]:
+			xbmc.stopSFX()
 			play()
 			xbmc.executebuiltin('XBMC.Notification(TTS arrived, trying to say it...)')
 			xbmc.playSFX(sys.argv[1])
-		elif sys.argv[1] == "welcome":
+		elif sys.argv[1] == "ping":
 			play()
 			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "WELCOME")')
 			xbmc.playSFX(SOUND_WELCOME)
@@ -82,30 +79,26 @@ if len(sys.argv) == 2:
 			play()
 			xbmc.executebuiltin('XBMC.Notification(Built-in sound called, "RINGTONE")')
 			xbmc.playSFX(SOUND_RINGTONE)
+		elif sys.argv[1] == "welcome":
+			xbmc.stopSFX()
+			play()
+			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "WELCOME")')
+			xbmc.playSFX(SOUND_WELCOME)
 		elif sys.argv[1] == "incall":
+			xbmc.stopSFX()
 			play()
 			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "INCOMING CALL")')
 			xbmc.playSFX(SOUND_INCALL)
 		elif sys.argv[1] == "callend":
+			xbmc.stopSFX()
 			play()
 			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "CALL RELEASE")')
 			xbmc.playSFX(SOUND_CALLEND)
 		elif sys.argv[1] == "batlow":
+			xbmc.stopSFX()
 			play()
 			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "BATTERY PHONE IS LOW")')
 			xbmc.playSFX(SOUND_BATLOW)
-		elif sys.argv[1] == "Sincall":
-			play()
-			xbmc.playSFX(SOUND_SINCALL)
-		elif sys.argv[1] == "Eincall":
-			play()
-			xbmc.playSFX(SOUND_EINCALL)
-		elif sys.argv[1] == "Sbatlow":
-			play()
-			xbmc.playSFX(SOUND_SBATLOW)
-		elif sys.argv[1] == "Ebatlow":
-			play()
-			xbmc.playSFX(SOUND_EBATLOW)
 		elif sys.argv[1] == "STOP": xbmc.stopSFX()
 		else: xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, command '+sys.argv[1]+' not recognized)')
 elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
