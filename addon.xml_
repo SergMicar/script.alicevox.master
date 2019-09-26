@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.alicevox.master" name="Alice voice" version="2.0.0" provider-name="GSW">
-  <requires>
-    <import addon="xbmc.python" version="2.25.0"/>
-	<import addon="script.module.pyxbmct" version="1.1.4"/>
-  </requires>
-  <extension point="xbmc.python.script" library="addon.py">
-    <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en_GB">Voice notifications from "smart home"</summary>
-    <description lang="en_GB">Allows you to play wav files transferred to the application from the "smart home"</description>
-    <disclaimer lang="en_GB"></disclaimer>
-    <language>en</language>
-    <platform>all</platform>
-    <license>GNU General Public License 2.0</license>
-    <forum>https://mjdm.ru/forum/viewtopic.php?f=5&t=2893&start=120</forum>
-    <website>https://mjdm.ru/forum/viewtopic.php?f=5&t=2893&start=120</website>
-    <email>Sergey.V.Goncharov@gmail.com</email>
-    <source>https://github.com/SergMicar/KODIAliceVox</source>
-    <news>v2.0.1 (26.09.2019)
-      [new]- add "ping" параметр, теперь:
-      welcome, incall, callend, batlow останавливают текущего воспроизведения файла
-      ping, ringtone не останавливают текущего воспроизведения файла
-      STOP - команда "остановить текущее воспроизведение
-	 
-	v2.0.0 (10.06.2019)
-	  [new] Refactoring
-      [new] Add urllib2 http post request after incoming event & http exception handler
-      [fix] some fix
-    </news>
-    <assets>
-        <icon>icon.png</icon>
-        <fanart>fanart.jpg</fanart>
-        <banner></banner>
-        <clearlogo>clearlogo.png</clearlogo>
-        <screenshot></screenshot>
-    </assets>
-  </extension>
+<addon id="script.alicevox.master" name="Alice voice" version="2.0.1" provider-name="GSW">
+	<requires>
+		<import addon="xbmc.python" version="2.25.0"/>
+		<import addon="script.module.pyxbmct" version="1.1.4"/>
+	</requires>
+	<extension point="xbmc.python.script" library="addon.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_GB">Voice notifications from "smart home"</summary>
+		<description lang="en_GB">Allows you to play wav files transferred to the application from the "smart home"</description>
+		<disclaimer lang="en_GB"></disclaimer>
+		<language>en</language>
+		<platform>all</platform>
+		<license>GNU General Public License 2.0</license>
+		<forum>https://mjdm.ru/forum/viewtopic.php?f=5&t=2893&start=120</forum>
+		<website>https://mjdm.ru/forum/viewtopic.php?f=5&t=2893&start=120</website>
+		<email>Sergey.V.Goncharov@gmail.com</email>
+		<source>https://github.com/SergMicar/KODIAliceVox</source>
+		<news>v2.0.1 (26.09.2019)
+			[new]- add "ping" параметр, теперь:
+			welcome, incall, callend, batlow останавливают текущего воспроизведения файла
+			ping, ringtone не останавливают текущего воспроизведения файла
+			STOP - команда "остановить текущее воспроизведение
+			v2.0.0 (10.06.2019)
+			[new] Refactoring
+			[new] Add urllib2 http post request after incoming event & http exception handler
+			[fix] some fix
+		</news>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<banner></banner>
+			<clearlogo>clearlogo.png</clearlogo>
+			<screenshot></screenshot>
+		</assets>
+	</extension>
 </addon>
