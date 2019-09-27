@@ -19,10 +19,10 @@
 		<source>https://github.com/SergMicar/script.alicevox.master</source>
 		<email>Sergey.V.Goncharov@gmail.com</email>
 		<news>v2.1.0 (27.09.2019)
-			[new]- add "ping" РїР°СЂР°РјРµС‚СЂ, С‚РµРїРµСЂСЊ:
-			welcome, incall, callend, batlow РѕСЃС‚Р°РЅР°РІР»РёРІР°СЋС‚ С‚РµРєСѓС‰РµРіРѕ РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёСЏ С„Р°Р№Р»Р°
-			ping, ringtone РЅРµ РѕСЃС‚Р°РЅР°РІР»РёРІР°СЋС‚ С‚РµРєСѓС‰РµРіРѕ РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёСЏ С„Р°Р№Р»Р°
-			STOP - РєРѕРјР°РЅРґР° "РѕСЃС‚Р°РЅРѕРІРёС‚СЊ С‚РµРєСѓС‰РµРµ РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ
+			[new]- add "ping" параметр, теперь:
+			welcome, incall, callend, batlow останавливают текущего воспроизведения файла
+			ping, ringtone не останавливают текущего воспроизведения файла
+			STOP - команда "остановить текущее воспроизведение
 			v2.0.0 (10.06.2019)
 			[new] Refactoring
 			[new] Add urllib2 http post request after incoming event & http exception handler
