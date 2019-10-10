@@ -14,7 +14,7 @@ import urllib2
 __addon__      = xbmcaddon.Addon()
 __cwd__        = xbmc.translatePath( __addon__.getAddonInfo('path') ).decode("utf-8")
 
-url = 'http://192.168.1.2/post_service'
+url = 'http://smart.home/post_service'
 opener = urllib2.build_opener(urllib2.HTTPHandler(debuglevel=1))
 data = urllib.urlencode({'event' : 'test',
                          'time'  : '10'})
