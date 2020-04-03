@@ -1,7 +1,7 @@
 Примеры вызова:
 
 Вывод звука из файла на локальном диске:
-http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["D:\\ringtone.wav"]},"id":1}
+http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["D:\\test.wav"]},"id":1}
 
 Вывод звука по http ссылке:
 http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["http://192.168.1.2/cms/cached/voice/aebd42dddcca11fa8b8d5ad4d75793d3_google.wav"]},"id":1}
@@ -13,10 +13,10 @@ http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Ad
 
 http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["ringtone"]},"id":1}
 
-Возможные значения: ping, ringtone, welcome, incall, callend, batlow, STOP
+Возможные значения: ringtone, welcome, incall, callend, batlow, STOP
 при этом:
-welcome, incall, callend, batlow останавливают текущего воспроизведения файла
-ping, ringtone не останавливают текущего воспроизведения файла
+welcome, incall, callend, batlow останавливают текущее воспроизведение звука предыдущего сообщения
+ringtone не останавливает текущее воспроизведение звука предыдущего сообщения
 STOP - команда "остановить текущее воспроизведение"
 
 
@@ -39,4 +39,4 @@ xbmc:xbmc - логин и пароль к KODI
 192.168.1.2 - удаленный сервер с хостингом картинок (например MDM)
 
 P.S.
-Для Terminals2 пинговать так: http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["ping"]},"id":1}
+Для модуля MDM terminals2 пинговать так: http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["ping"]},"id":1}
