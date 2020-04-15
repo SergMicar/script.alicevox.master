@@ -68,7 +68,7 @@ if len(sys.argv) == 2:
 		if "/cms/cached/voice/" in sys.argv[1]:
 			xbmc.stopSFX()
 			play()
-			xbmc.executebuiltin('XBMC.Notification(TTS arrived, trying to say it...)')
+#			xbmc.executebuiltin('XBMC.Notification(TTS arrived, trying to say it...)')
 			xbmc.playSFX(sys.argv[1])
 		elif sys.argv[1] == "ping":
 			pass
