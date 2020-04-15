@@ -20,10 +20,7 @@
 		<forum>https://mjdm.ru/forum/</forum>
 		<email>Sergey.V.Goncharov@gmail.com</email>
 		<source>https://github.com/SergMicar/script.alicevox.master</source>
-		<news>v2.1.0 (27.09.2019):
-   [new] add "ping" message.
-      - TTS "STOP" if arrives  messages: "URL", "welcome", "incall", "callend", "batlow".
-      - If message "ringtone" is arrives the previous message is keep on.</news>
+		<news>v2.1.0: add "ping" message. If message "ringtone" is arrives the previous message is keep on.</news>
 		<assets>
 			<icon>icon.png</icon>
 			<fanart>fanart.jpg</fanart>
