@@ -1,8 +1,11 @@
+v2.1.1 (15.04.2020)
+disable "XBMC.Notification(TTS arrived, trying to say it...)"
+
 v2.1.0 (27.09.2019)
 - add "ping" request:
-      welcome, incall, callend, batlow останавливают текущего воспроизведения файла
-      ping, ringtone не останавливают текущего воспроизведения файла
-      STOP - команда "остановить текущее воспроизведение
+      welcome, incall, callend, batlow Г®Г±ГІГ Г­Г ГўГ«ГЁГўГ ГѕГІ ГІГҐГЄГіГ№ГҐГЈГ® ГўГ®Г±ГЇГ°Г®ГЁГ§ГўГҐГ¤ГҐГ­ГЁГї ГґГ Г©Г«Г 
+      ping, ringtone Г­ГҐ Г®Г±ГІГ Г­Г ГўГ«ГЁГўГ ГѕГІ ГІГҐГЄГіГ№ГҐГЈГ® ГўГ®Г±ГЇГ°Г®ГЁГ§ГўГҐГ¤ГҐГ­ГЁГї ГґГ Г©Г«Г 
+      STOP - ГЄГ®Г¬Г Г­Г¤Г  "Г®Г±ГІГ Г­Г®ГўГЁГІГј ГІГҐГЄГіГ№ГҐГҐ ГўГ®Г±ГЇГ°Г®ГЁГ§ГўГҐГ¤ГҐГ­ГЁГҐ
 
 v2.0.0 (10.06.2019)
 - Refactoring. Add urllib2 http post request after incoming event & http exception handler
