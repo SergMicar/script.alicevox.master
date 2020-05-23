@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="Основные">
+        <setting label="Сервер УД" type="lsep"/>
+        <setting label="IP адрес или DNS имя" type="text" id="host" default="smart.home"/>
+        <setting label="Cообщения о приходе TTS" type="lsep"/>
+        <setting label="Показывать сообщения" type="bool" id="tts_notification" default="false"/>
+        <setting label=" время показа сообщения (сек)" type="slider" id="notification_time" subsetting="true" default="5" range="1,1,30" option="int" />
+        <setting label="Действия при приходе TTS" type="lsep"/>
+        <setting label="Прекращать воспроизведение предыдущей фразы TTS" type="bool" id="tts_stop" default="true"/>
+        <setting label="Снимать с паузы воспроизведение медиа" type="bool" id="media_unpause" default="false"/>
+    </category>
+    <category label="Вид сообщений">
+        <setting label="32013" type="action" action="RunScript(my.addon.id, downloadreport)"/>
+    </category>
+    <category label="Debug">
+        <setting label="Debug output" type="bool" id="debug" default="false"/>
+    </category>
+</settings>
+

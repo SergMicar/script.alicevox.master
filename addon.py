@@ -14,12 +14,6 @@ import urllib2
 __addon__      = xbmcaddon.Addon()
 __cwd__        = xbmc.translatePath( __addon__.getAddonInfo('path') ).decode("utf-8")
 
-url = 'http://192.168.1.2/post_service'
-opener = urllib2.build_opener(urllib2.HTTPHandler(debuglevel=1))
-data = urllib.urlencode({'event' : 'test',
-                         'time'  : '10'})
-
-
 
 #xbmc.translatePath(path)#'special://masterprofile/script_data' -> '/home/user/XBMC/UserData/script_data' on Linux
 
@@ -37,7 +31,25 @@ SOUND_INCALL = os.path.join(addon_dir, 'resources', 'media', "incall.wav")
 SOUND_CALLEND = os.path.join(addon_dir, 'resources', 'media', "callend.wav")
 SOUND_BATLOW = os.path.join(addon_dir, 'resources', 'media', "batlow.wav")
 
+
+settings = xbmcaddon.Addon(id='script.alicevox.master')
+host = settings.getSetting("host")                           #str
+url = 'http://'+host+'/post_service'
+opener = urllib2.build_opener(urllib2.HTTPHandler(debuglevel=1))
+data = urllib.urlencode({'event' : 'test',
+                         'time'  : '10'})
+tts_notification = settings.getSetting("tts_notification")   #bool->str
+notification_time = settings.getSetting("notification_time") #str
+n_time = int(notification_time)*1000                         #to seconds
+notification_time = str(n_time)                              #int->str
+tts_stop = settings.getSetting("tts_stop")                   #bool->str
+media_unpause = settings.getSetting("media_unpause")         #bool->str
+
+
+
 dialog = xbmcgui.Dialog()
+
+
 
 def isPlaybackPaused():
     return bool(xbmc.getCondVisibility("Player.Paused"))
@@ -47,13 +59,11 @@ def isMuted():
 
 def play():
 	if isPlaybackPaused(): xbmc.Player().pause() #trigger
-    
+
 
 def pause():
 	if not isPlaybackPaused(): xbmc.Player().pause() #trigger
-    
-	
-	
+
 
 #	xbmcgui.Dialog().ok(addonname, str(isPlaybackPaused()))
 #	xbmcgui.Dialog().ok(addonname, str(isMuted()))
@@ -63,37 +73,37 @@ def pause():
 #--MAIN--
 if len(sys.argv) == 2:
 	xbmc.enableNavSounds(True)
-	
+
 	if sys.argv[1] != "MESSAGE":
 		if "/cms/cached/voice/" in sys.argv[1]:
-			xbmc.stopSFX()
-			play()
-#			xbmc.executebuiltin('XBMC.Notification(TTS arrived, trying to say it...)')
-			xbmc.playSFX(sys.argv[1])
+			if tts_stop == "true": xbmc.stopSFX()
+			if media_unpause == "true": play()
+			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(TTS arrived, trying to say it..., '+notification_time+')')
+                        xbmc.playSFX(sys.argv[1])
 		elif sys.argv[1] == "ping":
 			pass
 		elif sys.argv[1] == "ringtone":
-			play()
+			if media_unpause == "true": play()
 			xbmc.executebuiltin('XBMC.Notification(Built-in sound called, "RINGTONE")')
 			xbmc.playSFX(SOUND_RINGTONE)
 		elif sys.argv[1] == "welcome":
-			xbmc.stopSFX()
-			play()
+			if tts_stop == "true": xbmc.stopSFX()
+			if media_unpause == "true": play()
 			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "WELCOME")')
 			xbmc.playSFX(SOUND_WELCOME)
 		elif sys.argv[1] == "incall":
-			xbmc.stopSFX()
-			play()
+			if tts_stop == "true": xbmc.stopSFX()
+			if media_unpause == "true": play()
 			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "INCOMING CALL")')
 			xbmc.playSFX(SOUND_INCALL)
 		elif sys.argv[1] == "callend":
-			xbmc.stopSFX()
-			play()
+			if tts_stop == "true": xbmc.stopSFX()
+			if media_unpause == "true": play()
 			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "CALL RELEASE")')
 			xbmc.playSFX(SOUND_CALLEND)
 		elif sys.argv[1] == "batlow":
-			xbmc.stopSFX()
-			play()
+			if tts_stop == "true": xbmc.stopSFX()
+			if media_unpause == "true": play()
 			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "BATTERY PHONE IS LOW")')
 			xbmc.playSFX(SOUND_BATLOW)
 		elif sys.argv[1] == "STOP": xbmc.stopSFX()
