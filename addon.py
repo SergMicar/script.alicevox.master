@@ -79,7 +79,7 @@ if len(sys.argv) == 2:
 			if tts_stop == "true": xbmc.stopSFX()
 			if media_unpause == "true": play()
 			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(TTS arrived, trying to say it..., '+notification_time+')')
-                        xbmc.playSFX(sys.argv[1])
+                        xbmc.playSFX(sys.argv[1],False)
 		elif sys.argv[1] == "ping":
 			pass
 		elif sys.argv[1] == "ringtone":
