@@ -72,6 +72,9 @@ def pause():
 #	xbmcgui.Dialog().ok(addonname, str(isPlaybackPaused()))
 #	xbmcgui.Dialog().ok(addonname, str(isMuted()))
 
+# X Y "width of control" "height of control"
+textbox = xbmcgui.ControlTextBox(600, 300, 300, 300, font='font14', textColor='0xFFFFD700')
+image = xbmcgui.ControlImage(400, 300, 200, 200, os.path.join(addon_dir, 'resources', 'img', "mic.png"))
 
 
 # Main execution
@@ -148,16 +151,15 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 	time.sleep(showtime)
 	window.close()
 elif len(sys.argv) > 2 and sys.argv[1] == "FFF":
-	# X Y "width of control" "height of control"
-	textbox = xbmcgui.ControlTextBox(600, 300, 300, 300, font='font24', textColor='0xFFFFD700')
-	#image = xbmcgui.ControlImage(100, 250, 125, 75, aspectRatio=2)
 	window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
 	window.addControl(textbox)
 	textbox.setText("My Text Box")
+	window.addControl(image)
+	image.setImage(os.path.join(addon_dir, 'resources', 'img', "mic.png"), False)
 	time.sleep(5)
-	textbox.setText("")
 	#textbox.reset()
-	#image.setImage('special://home/scripts/test.png', False)
+	textbox.setText("")
+	image.setImage("", False)
 else:
 	xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, have not correct data payload)')
 
