@@ -21,9 +21,13 @@ addon = xbmcaddon.Addon()
 addonname = addon.getAddonInfo('name')
 addon_dir = addon.getAddonInfo('path')
 
-#logo_attention = os.path.join(addon_dir, 'resources', 'img', "attention.png")
-#logo_construction = os.path.join(addon_dir, 'resources', 'img', "construction.png")
-logo_mdm = os.path.join(addon_dir, 'resources', 'img', "mdm.png") #worked only one/last instanse of os.path.join()
+LOGO_MDM = os.path.join(addon_dir, 'resources', 'img', "mdm.png")
+LOGO_PHONE = os.path.join(addon_dir, 'resources', 'img', "phone.png")
+LOGO_RETROPHONE = os.path.join(addon_dir, 'resources', 'img', "retro_phone.png")
+LOGO_MIC = os.path.join(addon_dir, 'resources', 'img', "mic.png")
+LOGO_NIGHTMODE = os.path.join(addon_dir, 'resources', 'img', "night_mode.png")
+LOGO_ATTENTION = os.path.join(addon_dir, 'resources', 'img', "attention.png")
+LOGO_CONSTUCT = os.path.join(addon_dir, 'resources', 'img', "construction.png")
 
 SOUND_WELCOME = os.path.join(addon_dir, 'resources', 'media', "welcome.wav")
 SOUND_RINGTONE = os.path.join(addon_dir, 'resources', 'media', "ringtone.wav")
@@ -119,7 +123,21 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		url=logo_mdm
 	elif len(sys.argv) == 6:
 		showtime = float(sys.argv[4])
-		url=logo_mdm if sys.argv[5] == "mdm" else sys.argv[5]
+		url=sys.argv[5]
+		if sys.argv[5] == "mdm":
+			 url=LOGO_MDM
+		elif sys.argv[5] == "phone":
+			url=LOGO_PHONE
+		elif sys.argv[5] == "retro_phone":
+			url=LOGO_RETROPHONE
+		elif sys.argv[5] == "mic":
+			 url=LOGO_MIC
+		elif sys.argv[5] == "night_mode":
+			url=LOGO_NIGHTMODE
+		elif sys.argv[5] == "attention":
+			url=LOGO_ATTENTION
+		elif sys.argv[5] == "construct":
+			url=LOGO_CONSTUCT
 	image = pyxbmct.Image(url) #-Create a logo
 	message = pyxbmct.Label(sys.argv[3], alignment=pyxbmct.ALIGN_CENTER, font="34") #-Create a text label, argument font="27" is not working :(
 #	message = pyxbmct.TextBox(sys.argv[3])
