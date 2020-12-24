@@ -74,7 +74,7 @@ def pause():
 
 
 
-#--MAIN--
+# Main execution
 if len(sys.argv) == 2:
 	xbmc.enableNavSounds(True)
 
@@ -147,6 +147,17 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 	window.show()
 	time.sleep(showtime)
 	window.close()
+elif len(sys.argv) > 2 and sys.argv[1] == "FFF":
+	# X Y "width of control" "height of control"
+	textbox = xbmcgui.ControlTextBox(600, 300, 300, 300, font='font24', textColor='0xFFFFD700')
+	#image = xbmcgui.ControlImage(100, 250, 125, 75, aspectRatio=2)
+	window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
+	window.addControl(textbox)
+	textbox.setText("My Text Box")
+	time.sleep(5)
+	textbox.setText("")
+	#textbox.reset()
+	#image.setImage('special://home/scripts/test.png', False)
 else:
 	xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, have not correct data payload)')
 
