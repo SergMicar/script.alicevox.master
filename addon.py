@@ -74,7 +74,7 @@ def pause():
 
 # X Y "width of control" "height of control"
 textbox = xbmcgui.ControlTextBox(600, 300, 300, 300, font='font14', textColor='0xFFFFD700')
-image = xbmcgui.ControlImage(400, 300, 200, 200, os.path.join(addon_dir, 'resources', 'img', "mic.png"))
+image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT)
 
 
 # Main execution
@@ -91,27 +91,27 @@ if len(sys.argv) == 2:
 			pass
 		elif sys.argv[1] == "ringtone":
 			if media_unpause == "true": play()
-			xbmc.executebuiltin('XBMC.Notification(Built-in sound called, "RINGTONE")')
+			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in sound called, "RINGTONE")')
 			xbmc.playSFX(SOUND_RINGTONE)
 		elif sys.argv[1] == "welcome":
 			if tts_stop == "true": xbmc.stopSFX()
 			if media_unpause == "true": play()
-			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "WELCOME")')
+			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "WELCOME")')
 			xbmc.playSFX(SOUND_WELCOME)
 		elif sys.argv[1] == "incall":
 			if tts_stop == "true": xbmc.stopSFX()
 			if media_unpause == "true": play()
-			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "INCOMING CALL")')
+			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "INCOMING CALL")')
 			xbmc.playSFX(SOUND_INCALL)
 		elif sys.argv[1] == "callend":
 			if tts_stop == "true": xbmc.stopSFX()
 			if media_unpause == "true": play()
-			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "CALL RELEASE")')
+			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "CALL RELEASE")')
 			xbmc.playSFX(SOUND_CALLEND)
 		elif sys.argv[1] == "batlow":
 			if tts_stop == "true": xbmc.stopSFX()
 			if media_unpause == "true": play()
-			xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "BATTERY PHONE IS LOW")')
+			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "BATTERY PHONE IS LOW")')
 			xbmc.playSFX(SOUND_BATLOW)
 		elif sys.argv[1] == "STOP": xbmc.stopSFX()
 		else: xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, command '+sys.argv[1]+' not recognized)')
@@ -153,9 +153,9 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 elif len(sys.argv) > 2 and sys.argv[1] == "FFF":
 	window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
 	window.addControl(textbox)
-	textbox.setText("My Text Box")
 	window.addControl(image)
-	image.setImage(os.path.join(addon_dir, 'resources', 'img', "mic.png"), False)
+	textbox.setText("My Text Box")
+	image.setImage(LOGO_MIC, False)
 	time.sleep(5)
 	#textbox.reset()
 	textbox.setText("")
