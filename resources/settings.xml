@@ -5,16 +5,17 @@
         <setting label="IP адрес или DNS имя" type="text" id="host" default="smart.home"/>
         <setting label="Cообщения о приходе TTS" type="lsep"/>
         <setting label="Показывать сообщения" type="bool" id="tts_notification" default="false"/>
-        <setting label=" время показа сообщения (сек)" type="slider" id="notification_time" subsetting="true" default="5" range="1,1,30" option="int" />
+        <setting label=" время показа сообщения (сек)" type="slider" id="notification_time" subsetting="true" default="5" range="1,1,30" option="int"/>
         <setting label="Действия при приходе TTS" type="lsep"/>
         <setting label="Прекращать воспроизведение предыдущей фразы TTS" type="bool" id="tts_stop" default="true"/>
         <setting label="Снимать с паузы воспроизведение медиа" type="bool" id="media_unpause" default="false"/>
     </category>
     <category label="Вид сообщений">
-        <setting label="32013" type="action" action="RunScript(my.addon.id, downloadreport)"/>
+        <setting label="Вид" type="enum" id="message_type" lvalues="system|xbmcgui|pyxbmct"/>
+		<setting label="Размер шрифта" type="labelenum" id="message_size" lvalues="Font 14|Font 18|Font 22|Font 28"/>
+		<setting label="Цвет шрифта" type="labelenum" id="message_olor" lvalues="Красный|Желтый|Зеленый|Синий|Фиолетовый"/>
     </category>
     <category label="Debug">
         <setting label="Debug output" type="bool" id="debug" default="false"/>
     </category>
 </settings>
-

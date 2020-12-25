@@ -48,6 +48,7 @@ n_time = int(notification_time)*1000                         #to seconds
 notification_time = str(n_time)                              #int->str
 tts_stop = settings.getSetting("tts_stop")                   #bool->str
 media_unpause = settings.getSetting("media_unpause")         #bool->str
+message_type = settings.getSetting("message_type")           #str
 
 
 
@@ -72,10 +73,19 @@ def pause():
 #	xbmcgui.Dialog().ok(addonname, str(isPlaybackPaused()))
 #	xbmcgui.Dialog().ok(addonname, str(isMuted()))
 
-# X Y "width of control" "height of control"
-textbox = xbmcgui.ControlTextBox(600, 300, 300, 300, font='font14', textColor='0xFFFFD700')
-image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT)
 
+# for xbmcgui
+textbox = xbmcgui.ControlTextBox(600, 300, 800, 200, font='font13', textColor='0xFFFFD700') # X Y "width of control" "height of control". 0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
+image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT) # X Y "width of control" "height of control"
+
+# for pyxbmct
+window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
+#window = pyxbmct.BlankDialogWindow() #transparent
+#window = pyxbmct.AddonFullWindow(sys.argv[2])
+#window = pyxbmct.BlankFullWindow()
+window.setGeometry(650, 170, 1, 5) #-Set the window "width", "height" and the grid resolution: 2 rows, 3 columns
+
+		
 
 # Main execution
 if len(sys.argv) == 2:
@@ -116,8 +126,6 @@ if len(sys.argv) == 2:
 		elif sys.argv[1] == "STOP": xbmc.stopSFX()
 		else: xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, command '+sys.argv[1]+' not recognized)')
 elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
-	window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
-	window.setGeometry(650, 170, 1, 5) #-Set the window width, height and the grid resolution: 2 rows, 3 columns
 	if len(sys.argv) == 4:
 		showtime = 5
 		url=logo_mdm
@@ -128,38 +136,41 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		showtime = float(sys.argv[4])
 		url=sys.argv[5]
 		if sys.argv[5] == "mdm":
-			 url=LOGO_MDM
+			url=LOGO_MDM
 		elif sys.argv[5] == "phone":
 			url=LOGO_PHONE
 		elif sys.argv[5] == "retro_phone":
 			url=LOGO_RETROPHONE
 		elif sys.argv[5] == "mic":
-			 url=LOGO_MIC
+			url=LOGO_MIC
 		elif sys.argv[5] == "night_mode":
 			url=LOGO_NIGHTMODE
 		elif sys.argv[5] == "attention":
 			url=LOGO_ATTENTION
 		elif sys.argv[5] == "construct":
 			url=LOGO_CONSTUCT
-	image = pyxbmct.Image(url) #-Create a logo
-	message = pyxbmct.Label(sys.argv[3], alignment=pyxbmct.ALIGN_CENTER, font="34") #-Create a text label, argument font="27" is not working :(
-#	message = pyxbmct.TextBox(sys.argv[3])
-#	message.setAnimations([('WindowOpen', 'effect=fade start=0 end=100 time=2000',), ('WindowClose', 'effect=fade start=100 end=0 time=2000',)])
-	window.placeControl(image, 0, 0) #-Place the img on the window grid
-	window.placeControl(message, 0, 1, rowspan=1, columnspan=4) #-Place the label/textbox on the window grid
-	window.show()
-	time.sleep(showtime)
-	window.close()
-elif len(sys.argv) > 2 and sys.argv[1] == "FFF":
-	window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
-	window.addControl(textbox)
-	window.addControl(image)
-	textbox.setText("My Text Box")
-	image.setImage(LOGO_MIC, False)
-	time.sleep(5)
-	#textbox.reset()
-	textbox.setText("")
-	image.setImage("", False)
+	if message_type == "0": #system
+		xbmc.executebuiltin('XBMC.Notification('+sys.argv[2]+', '+sys.argv[3]+', '+str(showtime*1000)+', '+str(url)+')')
+	if message_type == "1": #xbmcgui
+		window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
+		window.addControl(textbox)
+		window.addControl(image)
+		textbox.setText(sys.argv[3])
+		image.setImage(url, False)
+		time.sleep(showtime)
+		#textbox.reset()
+		textbox.setText("")
+		image.setImage("", False)
+	if message_type == "2": #pyxbmct
+		image = pyxbmct.Image(url) #-Create a logo
+		message = pyxbmct.Label(sys.argv[3], alignment=pyxbmct.ALIGN_CENTER, font="34") #-Create a text label, argument font="27" is not working :(
+		#message = pyxbmct.TextBox(sys.argv[3])
+		#message.setAnimations([('WindowOpen', 'effect=fade start=0 end=100 time=2000',), ('WindowClose', 'effect=fade start=100 end=0 time=2000',)])
+		window.placeControl(image, 0, 0) #-Place the img on the window grid
+		window.placeControl(message, 0, 1, rowspan=1, columnspan=4) #-Place the label/textbox on the window grid
+		window.show()
+		time.sleep(showtime)
+		window.close()
 else:
 	xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, have not correct data payload)')
 
