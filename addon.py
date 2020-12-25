@@ -75,8 +75,9 @@ def pause():
 
 
 # for xbmcgui
-textbox = xbmcgui.ControlTextBox(600, 300, 800, 200, font='font13', textColor='0xFFFFD700') # X Y "width of control" "height of control". 0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
 image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT) # X Y "width of control" "height of control"
+#font37, font45, font60, font_clock, WeatherTemp
+textbox = xbmcgui.ControlTextBox(630, 360, 800, 200, font='font60', textColor='0xFFFFD700') # X Y "width of control" "height of control". 0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
 
 # for pyxbmct
 window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
