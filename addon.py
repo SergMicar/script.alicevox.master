@@ -10,7 +10,6 @@ import time
 import json
 import urllib
 import urllib2
-from array import array
 
 __addon__      = xbmcaddon.Addon()
 __cwd__        = xbmc.translatePath( __addon__.getAddonInfo('path') ).decode("utf-8")
@@ -27,6 +26,8 @@ LOGO_PHONE = os.path.join(addon_dir, 'resources', 'img', "phone.png")
 LOGO_RETROPHONE = os.path.join(addon_dir, 'resources', 'img', "retro_phone.png")
 LOGO_MIC = os.path.join(addon_dir, 'resources', 'img', "mic.png")
 LOGO_NIGHTMODE = os.path.join(addon_dir, 'resources', 'img', "night_mode.png")
+LOGO_LOWBATT = os.path.join(addon_dir, 'resources', 'img', "low_batt.png")
+LOGO_REWIND = os.path.join(addon_dir, 'resources', 'img', "rewind.png")
 LOGO_ATTENTION = os.path.join(addon_dir, 'resources', 'img', "attention.png")
 LOGO_CONSTUCT = os.path.join(addon_dir, 'resources', 'img', "construction.png")
 
@@ -78,8 +79,7 @@ def pause():
 
 
 # for xbmcgui
-image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT) # X Y "width of control" "height of control"
-#font37, font45, font60, WeatherTemp
+image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width of control" "height of control"
 textbox = xbmcgui.ControlTextBox(630, 360, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y "width of control" "height of control". 0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
 
 # for pyxbmct
@@ -149,6 +149,10 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 			url=LOGO_MIC
 		elif sys.argv[5] == "night_mode":
 			url=LOGO_NIGHTMODE
+                elif sys.argv[5] == "low_batt":
+                        url=LOGO_LOWBATT
+                elif sys.argv[5] == "rewind":
+                        url=LOGO_REWIND
 		elif sys.argv[5] == "attention":
 			url=LOGO_ATTENTION
 		elif sys.argv[5] == "construct":
@@ -167,7 +171,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		image.setImage("", False)
 	if message_type == "2": #pyxbmct
 		image = pyxbmct.Image(url) #-Create a logo
-		message = pyxbmct.Label(sys.argv[3], alignment=pyxbmct.ALIGN_CENTER, font=message_size) #-Create a text label
+		message = pyxbmct.Label(sys.argv[3], alignment=pyxbmct.ALIGN_CENTER, font=message_size, textColor=colors[int(message_color)]) #-Create a text label
 		#message = pyxbmct.TextBox(sys.argv[3])
 		#message.setAnimations([('WindowOpen', 'effect=fade start=0 end=100 time=2000',), ('WindowClose', 'effect=fade start=100 end=0 time=2000',)])
 		window.placeControl(image, 0, 0) #-Place the img on the window grid
@@ -175,6 +179,33 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		window.show()
 		time.sleep(showtime)
 		window.close()
+elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
+        showtime = float(sys.argv[6])
+        url=sys.argv[7]
+        if sys.argv[7] == "mdm":
+                url=LOGO_MDM
+        elif sys.argv[7] == "phone":
+                url=LOGO_PHONE
+        elif sys.argv[7] == "retro_phone":
+                url=LOGO_RETROPHONE
+        elif sys.argv[7] == "mic":
+                url=LOGO_MIC
+        elif sys.argv[7] == "night_mode":
+                url=LOGO_NIGHTMODE
+        elif sys.argv[7] == "low_batt":
+                url=LOGO_LOWBATT
+        elif sys.argv[7] == "rewind":
+                url=LOGO_REWIND
+        elif sys.argv[7] == "attention":
+                url=LOGO_ATTENTION
+        elif sys.argv[7] == "construct":
+                url=LOGO_CONSTUCT
+        pic = xbmcgui.ControlImage(int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5]), url) # X Y LeftUp & "width of control" "height of control"
+        window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
+        window.addControl(pic)
+        pic.setImage(url, False)
+        time.sleep(showtime)
+        pic.setImage("", False)
 else:
 	xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, have not correct data payload)')
 
