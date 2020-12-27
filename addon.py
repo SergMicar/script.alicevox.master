@@ -10,6 +10,7 @@ import time
 import json
 import urllib
 import urllib2
+from array import array
 
 __addon__      = xbmcaddon.Addon()
 __cwd__        = xbmc.translatePath( __addon__.getAddonInfo('path') ).decode("utf-8")
@@ -50,7 +51,9 @@ tts_stop = settings.getSetting("tts_stop")                   #bool->str
 media_unpause = settings.getSetting("media_unpause")         #bool->str
 message_type = settings.getSetting("message_type")           #str
 message_size = settings.getSetting("message_size")           #str
+message_color = settings.getSetting("message_color")         #str
 
+colors = ['0xFFFF0000', '0xFFFFD700', '0xFF00FF00', '0xFF0000FF','0xFF8000FF']
 
 dialog = xbmcgui.Dialog()
 
@@ -77,7 +80,7 @@ def pause():
 # for xbmcgui
 image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT) # X Y "width of control" "height of control"
 #font37, font45, font60, WeatherTemp
-textbox = xbmcgui.ControlTextBox(630, 360, 1200, 400, font=message_size, textColor='0xFFFFD700') # X Y "width of control" "height of control". 0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
+textbox = xbmcgui.ControlTextBox(630, 360, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y "width of control" "height of control". 0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
 
 # for pyxbmct
 window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
@@ -150,7 +153,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 			url=LOGO_ATTENTION
 		elif sys.argv[5] == "construct":
 			url=LOGO_CONSTUCT
-	if message_type == "0": #system
+	if message_type == "0": #classic
 		xbmc.executebuiltin('XBMC.Notification('+sys.argv[2]+', '+sys.argv[3]+', '+str(showtime*1000)+', '+str(url)+')')
 	if message_type == "1": #xbmcgui
 		window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
