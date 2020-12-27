@@ -49,7 +49,7 @@ notification_time = str(n_time)                              #int->str
 tts_stop = settings.getSetting("tts_stop")                   #bool->str
 media_unpause = settings.getSetting("media_unpause")         #bool->str
 message_type = settings.getSetting("message_type")           #str
-
+message_size = settings.getSetting("message_size")           #str
 
 
 dialog = xbmcgui.Dialog()
@@ -76,8 +76,8 @@ def pause():
 
 # for xbmcgui
 image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT) # X Y "width of control" "height of control"
-#font37, font45, font60, font_clock, WeatherTemp
-textbox = xbmcgui.ControlTextBox(630, 360, 800, 200, font='font60', textColor='0xFFFFD700') # X Y "width of control" "height of control". 0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
+#font37, font45, font60, WeatherTemp
+textbox = xbmcgui.ControlTextBox(630, 360, 1200, 400, font=message_size, textColor='0xFFFFD700') # X Y "width of control" "height of control". 0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
 
 # for pyxbmct
 window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
@@ -86,7 +86,7 @@ window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
 #window = pyxbmct.BlankFullWindow()
 window.setGeometry(650, 170, 1, 5) #-Set the window "width", "height" and the grid resolution: 2 rows, 3 columns
 
-		
+
 
 # Main execution
 if len(sys.argv) == 2:
@@ -164,7 +164,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		image.setImage("", False)
 	if message_type == "2": #pyxbmct
 		image = pyxbmct.Image(url) #-Create a logo
-		message = pyxbmct.Label(sys.argv[3], alignment=pyxbmct.ALIGN_CENTER, font="34") #-Create a text label, argument font="27" is not working :(
+		message = pyxbmct.Label(sys.argv[3], alignment=pyxbmct.ALIGN_CENTER, font=message_size) #-Create a text label
 		#message = pyxbmct.TextBox(sys.argv[3])
 		#message.setAnimations([('WindowOpen', 'effect=fade start=0 end=100 time=2000',), ('WindowClose', 'effect=fade start=100 end=0 time=2000',)])
 		window.placeControl(image, 0, 0) #-Place the img on the window grid

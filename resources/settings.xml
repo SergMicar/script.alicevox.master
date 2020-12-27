@@ -11,9 +11,9 @@
         <setting label="Снимать с паузы воспроизведение медиа" type="bool" id="media_unpause" default="false"/>
     </category>
     <category label="Вид сообщений">
-        <setting label="Вид" type="enum" id="message_type" lvalues="system|xbmcgui|pyxbmct"/>
-		<setting label="Размер шрифта" type="labelenum" id="message_size" lvalues="Font 14|Font 18|Font 22|Font 28"/>
-		<setting label="Цвет шрифта" type="labelenum" id="message_olor" lvalues="Красный|Желтый|Зеленый|Синий|Фиолетовый"/>
+        <setting label="Вид" type="enum" id="message_type" values="classic|xbmcgui|pyxbmct" default="0"/>
+	<setting label="Размер шрифта" type="labelenum" id="message_size" values="font22|font28|font30|font37|font45|font48|font60|WeatherTemp" default="4"/>
+        <setting label="Цвет шрифта" type="enum" id="message_color" values="Красный|Желтый|Зеленый|Синий|Фиолетовый" default="1"/>
     </category>
     <category label="Debug">
         <setting label="Debug output" type="bool" id="debug" default="false"/>
