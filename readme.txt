@@ -25,7 +25,7 @@ STOP - команда "остановить текущее воспроизве�
 Вывод сообщения:
 http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["MESSAGE", "SmartHome Alice", "Проверка подключения"]},"id":1}
 
-http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["MESSAGE", "SmartHome Alice", "Проверка подключения", 7]},"id":1}
+http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["MESSAGE", "SmartHome Alice", "Проверка подключения", "7"]},"id":1}
 
 http://xbmc:xbmc@192.168.1.51:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["MESSAGE", "SmartHome Alice", "Проверка подключения", "7", "mdm"]},"id":1}
 
@@ -45,3 +45,8 @@ xbmc:xbmc - логин и пароль к KODI
 
 
 Особенности: В силу специфики плеера системных звуков KODI (через который реализовано воспроизведение сообщений) - любая команда на ТТС будет приводть к снятию с паузы воспроизводимого контента (если он в момент ТТС стоял на паузе), иначе сообщение не проигрывается. Надеюсь эта недоработка будет решена в следующих версиях KODI
+
+
+Вывод произвольного изображения
+http://192.168.2.122:8080/jsonrpc?request={"jsonrpc":"2.0","method":"Addons.ExecuteAddon","params":{"addonid":"script.alicevox.master","params":["PIC","20","20","200","200","7","call_outgoing"]},"id":1}
+
