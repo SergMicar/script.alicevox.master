@@ -196,8 +196,8 @@ elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
                 url=LOGO_PHONE
         elif sys.argv[7] == "retro_phone":
                 url=LOGO_RETROPHONE
-		elif sys.argv[7] == "call_outgoing":
-				url=LOGO_CALLOUTGOING
+        elif sys.argv[7] == "call_outgoing":
+                url=LOGO_CALLOUTGOING
         elif sys.argv[7] == "mic":
                 url=LOGO_MIC
         elif sys.argv[7] == "night_mode":
