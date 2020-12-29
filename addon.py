@@ -24,6 +24,7 @@ addon_dir = addon.getAddonInfo('path')
 LOGO_MDM = os.path.join(addon_dir, 'resources', 'img', "mdm.png")
 LOGO_PHONE = os.path.join(addon_dir, 'resources', 'img', "phone.png")
 LOGO_RETROPHONE = os.path.join(addon_dir, 'resources', 'img', "retro_phone.png")
+LOGO_CALLOUTGOING = os.path.join(addon_dir, 'resources', 'img', "call_outgoing.png")
 LOGO_MIC = os.path.join(addon_dir, 'resources', 'img', "mic.png")
 LOGO_NIGHTMODE = os.path.join(addon_dir, 'resources', 'img', "night_mode.png")
 LOGO_LOWBATT = os.path.join(addon_dir, 'resources', 'img', "low_batt.png")
@@ -79,13 +80,15 @@ def pause():
 #	xbmcgui.Dialog().ok(addonname, str(isMuted()))
 
 
-# for xbmcgui
+# --- xbmcgui ---
+#align center
 #image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width" "height"
 #textbox = xbmcgui.ControlTextBox(630, 360, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y "width" "height"
+#align bottom
 image = xbmcgui.ControlImage(400, 650, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width of control" "height of control"
 textbox = xbmcgui.ControlTextBox(630, 630, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y LeftUp & "width" "height"
 
-# for pyxbmct
+# --- pyxbmct ---
 window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
 #window = pyxbmct.BlankDialogWindow() #transparent
 #window = pyxbmct.AddonFullWindow(sys.argv[2])
@@ -148,14 +151,16 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 			url=LOGO_PHONE
 		elif sys.argv[5] == "retro_phone":
 			url=LOGO_RETROPHONE
+		elif sys.argv[5] == "call_outgoing":
+			url=LOGO_CALLOUTGOING
 		elif sys.argv[5] == "mic":
 			url=LOGO_MIC
 		elif sys.argv[5] == "night_mode":
 			url=LOGO_NIGHTMODE
-                elif sys.argv[5] == "low_batt":
-                        url=LOGO_LOWBATT
-                elif sys.argv[5] == "rewind":
-                        url=LOGO_REWIND
+		elif sys.argv[5] == "low_batt":
+			url=LOGO_LOWBATT
+		elif sys.argv[5] == "rewind":
+			url=LOGO_REWIND
 		elif sys.argv[5] == "attention":
 			url=LOGO_ATTENTION
 		elif sys.argv[5] == "construct":
@@ -191,6 +196,8 @@ elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
                 url=LOGO_PHONE
         elif sys.argv[7] == "retro_phone":
                 url=LOGO_RETROPHONE
+		elif sys.argv[7] == "call_outgoing":
+				url=LOGO_CALLOUTGOING
         elif sys.argv[7] == "mic":
                 url=LOGO_MIC
         elif sys.argv[7] == "night_mode":
