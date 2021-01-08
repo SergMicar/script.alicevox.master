@@ -80,21 +80,6 @@ def pause():
 #	xbmcgui.Dialog().ok(addonname, str(isMuted()))
 
 
-# --- xbmcgui ---
-#align center
-#image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width" "height"
-#textbox = xbmcgui.ControlTextBox(630, 360, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y "width" "height"
-#align bottom
-image = xbmcgui.ControlImage(400, 650, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width of control" "height of control"
-textbox = xbmcgui.ControlTextBox(630, 630, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y LeftUp & "width" "height"
-
-# --- pyxbmct ---
-window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
-#window = pyxbmct.BlankDialogWindow() #transparent
-#window = pyxbmct.AddonFullWindow(sys.argv[2])
-#window = pyxbmct.BlankFullWindow()
-window.setGeometry(650, 170, 1, 5) #-Set the window "width", "height" and the grid resolution: 2 rows, 3 columns
-
 
 
 # Main execution
@@ -168,6 +153,12 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 	if message_type == "0": #classic
 		xbmc.executebuiltin('XBMC.Notification('+sys.argv[2]+', '+sys.argv[3]+', '+str(showtime*1000)+', '+str(url)+')')
 	if message_type == "1": #xbmcgui
+		#-align center-
+		#image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width" "height"
+		#textbox = xbmcgui.ControlTextBox(630, 360, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y "width" "height"
+		#-align bottom-
+		image = xbmcgui.ControlImage(400, 650, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width of control" "height of control"
+		textbox = xbmcgui.ControlTextBox(630, 630, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y LeftUp & "width" "height"
 		window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
 		window.addControl(textbox)
 		window.addControl(image)
@@ -178,6 +169,11 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		textbox.setText("")
 		image.setImage("", False)
 	if message_type == "2": #pyxbmct
+		window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
+		#window = pyxbmct.BlankDialogWindow() #transparent
+		#window = pyxbmct.AddonFullWindow(sys.argv[2])
+		#window = pyxbmct.BlankFullWindow()
+		window.setGeometry(650, 170, 1, 5) #-Set the window "width", "height" and the grid resolution: 2 rows, 3 columns
 		image = pyxbmct.Image(url)
 		message = pyxbmct.Label(sys.argv[3], alignment=pyxbmct.ALIGN_CENTER, font=message_size, textColor=colors[int(message_color)])
 		#message = pyxbmct.TextBox(sys.argv[3])
