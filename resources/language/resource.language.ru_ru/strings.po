@@ -1,0 +1,14 @@
+# Kodi Media Center language file
+# Addon Name: Alice voice
+# Addon id: script.alicevox.master
+# Addon Provider: Kvantos
+msgid ""
+msgstr ""
+
+msgctxt "#32000"
+msgid "Now playing"
+msgstr "Сейчас воспроизводится:"
+
+msgctxt "#32001"
+msgid "Search..."
+msgstr "Поиск…"
