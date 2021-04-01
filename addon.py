@@ -157,8 +157,8 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		#image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width" "height"
 		#textbox = xbmcgui.ControlTextBox(630, 360, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y "width" "height"
 		#-align bottom-
-		image = xbmcgui.ControlImage(400, 650, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width of control" "height of control"
-		textbox = xbmcgui.ControlTextBox(630, 630, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y LeftUp & "width" "height"
+		image = xbmcgui.ControlImage(400, 600, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width of control" "height of control"
+		textbox = xbmcgui.ControlTextBox(630, 580, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y LeftUp & "width" "height"
 		window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
 		window.addControl(textbox)
 		window.addControl(image)
