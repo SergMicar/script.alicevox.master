@@ -132,10 +132,10 @@ if len(sys.argv) == 2:
 elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 	if len(sys.argv) == 4:
 		showtime = 5
-		url=logo_mdm
+		url=LOGO_MDM
 	elif len(sys.argv) == 5:
 		showtime = float(sys.argv[4])
-		url=logo_mdm
+		url=LOGO_MDM
 	elif len(sys.argv) == 6:
 		showtime = float(sys.argv[4])
 		url=sys.argv[5]
