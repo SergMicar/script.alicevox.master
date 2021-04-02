@@ -58,7 +58,37 @@ message_color = settings.getSetting("message_color")         #str
 #0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
 colors = ['0xFFFF0000', '0xFFFFD700', '0xFF00FF00', '0xFF0000FF','0xFF8000FF']
 
+i_pos_x = 400 #LeftUp
+i_pos_y = 600 #LeftUp
+i_width = 200
+i_height = 200
+
+t_pos_x = 630 #LeftUp
+t_pos_y = 580 #LeftUp
+t_width = 1200
+t_height = 400
+
+
 dialog = xbmcgui.Dialog()
+
+
+textbox = xbmcgui.ControlTextBox(t_pos_x, t_pos_y, t_width, t_height, font=message_size, textColor=colors[int(message_color)])
+#10000 - home
+#10025 - home menu
+#12005 - full video
+
+
+wid = xbmcgui.getCurrentWindowId()
+window = xbmcgui.Window(wid)
+window.addControl(textbox)
+textbox.setText(str(wid))
+time.sleep(3)
+textbox.setText("")
+#textbox.setText('This is a line of text that can wrap.')
+#time.sleep(1)
+#textbox.setText("")
+
+
 
 
 
@@ -154,20 +184,21 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		xbmc.executebuiltin('XBMC.Notification('+sys.argv[2]+', '+sys.argv[3]+', '+str(showtime*1000)+', '+str(url)+')')
 	if message_type == "1": #xbmcgui
 		#-align center-
-		#image = xbmcgui.ControlImage(400, 300, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width" "height"
-		#textbox = xbmcgui.ControlTextBox(630, 360, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y "width" "height"
+		#image = xbmcgui.ControlImage(i_pos_x, i_pos_y, i_width, i_height, LOGO_CONSTUCT) # X Y LeftUp & "width" "height"
+		#textbox = xbmcgui.ControlTextBox(t_pos_x, t_pos_y, t_width, t_height, font=message_size, textColor=colors[int(message_color)])
 		#-align bottom-
-		image = xbmcgui.ControlImage(400, 600, 200, 200, LOGO_CONSTUCT) # X Y LeftUp & "width of control" "height of control"
-		textbox = xbmcgui.ControlTextBox(630, 580, 1200, 400, font=message_size, textColor=colors[int(message_color)]) # X Y LeftUp & "width" "height"
-		window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
-		window.addControl(textbox)
-		window.addControl(image)
-		textbox.setText(sys.argv[3])
-		image.setImage(url, False)
-		time.sleep(showtime)
-		#textbox.reset()
-		textbox.setText("")
-		image.setImage("", False)
+		image = xbmcgui.ControlImage(i_pos_x, i_pos_y, i_width, i_height, LOGO_CONSTUCT) # X Y LeftUp & "width of control" "height of control"
+		textbox = xbmcgui.ControlTextBox(t_pos_x, t_pos_y, t_width, t_height, font=message_size, textColor=colors[int(message_color)])
+		if wid == 10000 or wid == 10025 or wid == 12005: #10000(home) | 10025(home menu) | 12005(full video)
+			window = xbmcgui.Window(wid)
+			window.addControl(textbox)
+			window.addControl(image)
+			textbox.setText(sys.argv[3])
+			image.setImage(url, False)
+			time.sleep(showtime)
+			#textbox.reset()
+			textbox.setText("")
+			image.setImage("", False)
 	if message_type == "2": #pyxbmct
 		window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
 		#window = pyxbmct.BlankDialogWindow() #transparent
@@ -207,13 +238,15 @@ elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
         elif sys.argv[7] == "construct":
                 url=LOGO_CONSTUCT
         pic = xbmcgui.ControlImage(int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5]), url) # X Y LeftUp & "width of control" "height of control"
-        window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
+        window = xbmcgui.Window(wid)
         window.addControl(pic)
         pic.setImage(url, False)
         time.sleep(showtime)
+		#setFocusId(wid)
         pic.setImage("", False)
 else:
-	xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, have not correct data payload)')
+        xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, have not correct data payload)')
+
 
 
 
