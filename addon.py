@@ -71,22 +71,30 @@ t_height = 400
 
 dialog = xbmcgui.Dialog()
 
-
-textbox = xbmcgui.ControlTextBox(t_pos_x, t_pos_y, t_width, t_height, font=message_size, textColor=colors[int(message_color)])
 #10000 - home
 #10025 - home menu
 #12005 - full video
-
-
 wid = xbmcgui.getCurrentWindowId()
 window = xbmcgui.Window(wid)
-window.addControl(textbox)
-textbox.setText(str(wid))
-time.sleep(3)
-textbox.setText("")
-#textbox.setText('This is a line of text that can wrap.')
-#time.sleep(1)
-#textbox.setText("")
+
+
+
+
+##Debug
+#textbox = xbmcgui.ControlTextBox(t_pos_x, t_pos_y, t_width, t_height, font=message_size, textColor=colors[int(message_color)])
+#pic = xbmcgui.ControlImage(i_pos_x, i_pos_y, i_width, i_height, LOGO_MIC)
+#
+#window.addControl(textbox)
+#textbox.setText(str(wid))
+#time.sleep(3)
+##textbox.setText('This is a line of text that can wrap.')
+##time.sleep(1)
+##textbox.setText("")
+#window.removeControl(textbox)
+#
+#window.addControl(pic)
+#window.removeControl(pic)
+
 
 
 
@@ -196,9 +204,8 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 			textbox.setText(sys.argv[3])
 			image.setImage(url, False)
 			time.sleep(showtime)
-			#textbox.reset()
-			textbox.setText("")
-			image.setImage("", False)
+			window.removeControl(textbox) #textbox.setText("")
+			window.removeControl(image) #image.setImage("", False)
 	if message_type == "2": #pyxbmct
 		window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
 		#window = pyxbmct.BlankDialogWindow() #transparent
@@ -242,8 +249,8 @@ elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
         window.addControl(pic)
         pic.setImage(url, False)
         time.sleep(showtime)
-		#setFocusId(wid)
-        pic.setImage("", False)
+        #window.setFocusId(wid) #crashing kodi
+        window.removeControl(pic) #pic.setImage("", False)
 else:
         xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, have not correct data payload)')
 
