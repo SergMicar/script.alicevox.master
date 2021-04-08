@@ -58,6 +58,9 @@ message_color = settings.getSetting("message_color")         #str
 #0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
 colors = ['0xFFFF0000', '0xFFFFD700', '0xFF00FF00', '0xFF0000FF','0xFF8000FF']
 
+#ScreenHeight = xbmcgui.getScreenHeight()
+#ScreenWidth = xbmcgui.getScreenWidth()
+
 i_pos_x = 400 #LeftUp
 i_pos_y = 600 #LeftUp
 i_width = 200
@@ -69,14 +72,22 @@ t_width = 1200
 t_height = 400
 
 
-dialog = xbmcgui.Dialog()
+dialog = xbmcgui.Dialog() #Kodi dialog class
 
-#10000 - home
-#10025 - home menu
-#12005 - full video
+
+#https://kodi.wiki/view/Window_IDs
+#
+#10000 - home				WINDOW_HOME						(Home.xml)
+#10025 - homemenu			WINDOW_VIDEO_NAV				(MyVideoNav.xml)
+#10028 - videoplaylist		WINDOW_VIDEO_PLAYLIST			(MyPlaylist.xml)
+#10500 - musicplaylist		WINDOW_MUSIC_PLAYLIST			(MyPlaylist.xml)
+#10502 - music				WINDOW_MUSIC_NAV				(MyMusicNav.xml)
+#10600 - pvrguideinfo		WINDOW_DIALOG_PVR_GUIDE_INFO	(DialogPVRInfo.xml)
+#12005 - fullscreenvideo	WINDOW_FULLSCREEN_VIDEO			(VideoFullScreen.xml)
+
 wid = xbmcgui.getCurrentWindowId()
 window = xbmcgui.Window(wid)
-
+	
 
 
 
@@ -197,7 +208,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		#-align bottom-
 		image = xbmcgui.ControlImage(i_pos_x, i_pos_y, i_width, i_height, LOGO_CONSTUCT) # X Y LeftUp & "width of control" "height of control"
 		textbox = xbmcgui.ControlTextBox(t_pos_x, t_pos_y, t_width, t_height, font=message_size, textColor=colors[int(message_color)])
-		if wid == 10000 or wid == 10025 or wid == 12005: #10000(home) | 10025(home menu) | 12005(full video)
+		if wid == 10000 or wid == 10025 or wid == 10028 or wid == 10500 or wid == 10502 or wid == 10600 or wid == 12005:
 			window = xbmcgui.Window(wid)
 			window.addControl(textbox)
 			window.addControl(image)
