@@ -28,6 +28,7 @@ LOGO_CALLOUTGOING = os.path.join(addon_dir, 'resources', 'img', "call_outgoing.p
 LOGO_MIC = os.path.join(addon_dir, 'resources', 'img', "mic.png")
 LOGO_NIGHTMODE = os.path.join(addon_dir, 'resources', 'img', "night_mode.png")
 LOGO_LOWBATT = os.path.join(addon_dir, 'resources', 'img', "low_batt.png")
+LOGO_FULLBATT = os.path.join(addon_dir, 'resources', 'img', "full_batt.png")
 LOGO_REWIND = os.path.join(addon_dir, 'resources', 'img', "rewind.png")
 LOGO_ATTENTION = os.path.join(addon_dir, 'resources', 'img', "attention.png")
 LOGO_CONSTUCT = os.path.join(addon_dir, 'resources', 'img', "construction.png")
@@ -193,6 +194,8 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 			url=LOGO_NIGHTMODE
 		elif sys.argv[5] == "low_batt":
 			url=LOGO_LOWBATT
+		elif sys.argv[5] == "full_batt":
+			url=LOGO_FULLBATT
 		elif sys.argv[5] == "rewind":
 			url=LOGO_REWIND
 		elif sys.argv[5] == "attention":
@@ -249,6 +252,8 @@ elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
                 url=LOGO_NIGHTMODE
         elif sys.argv[7] == "low_batt":
                 url=LOGO_LOWBATT
+	elif sys.argv[7] == "full_batt":
+		url=LOGO_FULLBATT
         elif sys.argv[7] == "rewind":
                 url=LOGO_REWIND
         elif sys.argv[7] == "attention":
