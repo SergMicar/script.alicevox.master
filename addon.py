@@ -23,6 +23,8 @@ addon_dir = addon.getAddonInfo('path')
 
 LOGO_MDM = os.path.join(addon_dir, 'resources', 'img', "mdm.png")
 LOGO_IR = os.path.join(addon_dir, 'resources', 'img', "ir_received.png")
+LOGO_MQTT = os.path.join(addon_dir, 'resources', 'img', "mqtt.png")
+LOGO_MQTTERR = os.path.join(addon_dir, 'resources', 'img', "mqtt_err.png")
 LOGO_PHONE = os.path.join(addon_dir, 'resources', 'img', "phone.png")
 LOGO_RETROPHONE = os.path.join(addon_dir, 'resources', 'img', "retro_phone.png")
 LOGO_CALLOUTGOING = os.path.join(addon_dir, 'resources', 'img', "call_outgoing.png")
@@ -206,6 +208,10 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 			url=LOGO_MDM
 		elif sys.argv[5] == "ir":
 			url=LOGO_IR
+		elif sys.argv[5] == "mqtt":
+			url=LOGO_MQTT
+		elif sys.argv[5] == "mqtt_err":
+			url=LOGO_MQTTERR
 		elif sys.argv[5] == "phone":
 			url=LOGO_PHONE
 		elif sys.argv[5] == "retro_phone":
@@ -271,6 +277,10 @@ elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
                 url=LOGO_MDM
         elif sys.argv[7] == "ir":
                 url=LOGO_IR
+        elif sys.argv[5] == "mqtt":
+                url=LOGO_MQTT
+        elif sys.argv[5] == "mqtt_err":
+                url=LOGO_MQTTERR
         elif sys.argv[7] == "phone":
                 url=LOGO_PHONE
         elif sys.argv[7] == "retro_phone":
