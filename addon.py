@@ -150,7 +150,7 @@ if len(sys.argv) == 2:
 	xbmc.enableNavSounds(True)
 
 	if sys.argv[1] != "MESSAGE":
-		if debug == "true": xbmc.log('ALICEVOX -> !MESSAGE: '+sys.argv[1], 2)
+		if debug == "true": xbmc.log('ALICEVOX -> argument recieve: '+sys.argv[1], 2)
 		if "/cms/cached/voice/" in sys.argv[1]:
 			if tts_stop == "true": xbmc.stopSFX()
 			if media_unpause == "true": play()
@@ -188,7 +188,9 @@ if len(sys.argv) == 2:
 			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "BATTERY PHONE IS LOW")')
 			if debug == "true": xbmc.log('ALICEVOX -> xbmc.playSFX: '+sys.argv[1], 2)
 			xbmc.playSFX(SOUND_BATLOW)
-		elif sys.argv[1] == "STOP": xbmc.stopSFX()
+		elif sys.argv[1] == "STOP":
+			if debug == "true": xbmc.log('ALICEVOX -> xbmc.stopSFX command execute', 2)
+			xbmc.stopSFX()
 		else: xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, command '+sys.argv[1]+' not recognized)')
 elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 	if debug == "true": xbmc.log('ALICEVOX -> MESSAGE', 2)
