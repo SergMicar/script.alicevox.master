@@ -231,7 +231,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		if debug == "true": xbmc.log('ALICEVOX -> Recieve CLASSIC message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms, ' + str(url), 2)
 		xbmc.executebuiltin('XBMC.Notification('+sys.argv[2]+', '+sys.argv[3]+', '+str(showtime*1000)+', '+str(url)+')')
 	if message_type == "1": #xbmcgui
-		if debug == "true": xbmc.log('ALICEVOX -> Recieve XBMCGUI message: ', 2)
+		if debug == "true": xbmc.log('ALICEVOX -> Recieve XBMCGUI message: ' + str(wid) + ', XBMCGUI ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms', 2)
 		#-align center-
 		#image = xbmcgui.ControlImage(i_pos_x, i_pos_y, i_width, i_height, LOGO_CONSTUCT) # X Y LeftUp & "width" "height"
 		#textbox = xbmcgui.ControlTextBox(t_pos_x, t_pos_y, t_width, t_height, font=message_size, textColor=colors[int(message_color)])
@@ -239,7 +239,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		image = xbmcgui.ControlImage(i_pos_x, i_pos_y, i_width, i_height, LOGO_CONSTUCT) # X Y LeftUp & "width of control" "height of control"
 		textbox = xbmcgui.ControlTextBox(t_pos_x, t_pos_y, t_width, t_height, font=message_size, textColor=colors[int(message_color)])
         if wid == 10000 or wid == 10025 or wid == 10028 or wid == 10500 or wid == 10502 or wid == 10600 or wid == 12005:
-			if debug == "true": xbmc.log('ALICEVOX -> Allowed window id found: ' + str(wid) + ', ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms', 2)
+			if debug == "true": xbmc.log('ALICEVOX -> Allowed window id found: ' + str(wid) + ', XBMCGUI is shown!', 2)
 			window = xbmcgui.Window(wid)
 			window.addControl(textbox)
 			window.addControl(image)
