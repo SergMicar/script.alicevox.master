@@ -16,6 +16,6 @@
         <setting label="Цвет шрифта" type="enum" id="message_color" values="Красный|Желтый|Зеленый|Синий|Фиолетовый" default="1"/>
     </category>
     <category label="Debug">
-        <setting label="Debug output" type="bool" id="debug" default="false"/>
+        <setting label="Debug output to kodi.log" type="bool" id="debug" default="false"/>
     </category>
 </settings>
