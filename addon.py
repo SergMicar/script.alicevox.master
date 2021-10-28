@@ -59,6 +59,8 @@ message_color = settings.getSetting("message_color")         #str
 debug = settings.getSetting("debug")                         #bool->str
 debug = "true"
 
+if debug == "true": xbmc.log('ALICEVOX CONFIG -> tts_notification='+tts_notification+', notification_time='+notification_time+', tts_stop='+tts_stop+', media_unpause='+media_unpause+', message_type='+message_type+', message_size='+message_size+', message_color='+message_color, 2)
+
 #0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
 colors = ['0xFFFF0000', '0xFFFFD700', '0xFF00FF00', '0xFF0000FF','0xFF8000FF']
 
@@ -123,11 +125,17 @@ def isMuted():
     return bool(xbmc.getCondVisibility("Player.Muted"))
 
 def play():
-	if isPlaybackPaused(): xbmc.Player().pause() #trigger
+	if debug == "true": xbmc.log('ALICEVOX -> cmd:play', 2)
+	if isPlaybackPaused():
+		if debug == "true": xbmc.log('ALICEVOX -> playing', 2)
+		xbmc.Player().pause() #trigger
 
 
 def pause():
-	if not isPlaybackPaused(): xbmc.Player().pause() #trigger
+    if debug == "true": xbmc.log('ALICEVOX -> cmd:pause', 2)
+	if not isPlaybackPaused():
+		if debug == "true": xbmc.log('ALICEVOX -> paused', 2)
+		xbmc.Player().pause() #trigger
 
 
 #	xbmcgui.Dialog().ok(addonname, str(isPlaybackPaused()))
