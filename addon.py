@@ -157,33 +157,42 @@ if len(sys.argv) == 2:
 			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(TTS arrived, trying to say it..., '+notification_time+')')
                         xbmc.playSFX(sys.argv[1],False)
 		elif sys.argv[1] == "ping":
+			if debug == "true": xbmc.log('ALICEVOX -> pong', 2)
 			pass
 		elif sys.argv[1] == "ringtone":
 			if media_unpause == "true": play()
 			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in sound called, "RINGTONE")')
+			if debug == "true": xbmc.log('ALICEVOX -> xbmc.playSFX: '+sys.argv[1], 2)
 			xbmc.playSFX(SOUND_RINGTONE)
 		elif sys.argv[1] == "welcome":
 			if tts_stop == "true": xbmc.stopSFX()
 			if media_unpause == "true": play()
 			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "WELCOME")')
+			if debug == "true": xbmc.log('ALICEVOX -> xbmc.playSFX: '+sys.argv[1], 2)
 			xbmc.playSFX(SOUND_WELCOME)
 		elif sys.argv[1] == "incall":
 			if tts_stop == "true": xbmc.stopSFX()
 			if media_unpause == "true": play()
 			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "INCOMING CALL")')
+			if debug == "true": xbmc.log('ALICEVOX -> xbmc.playSFX: '+sys.argv[1], 2)
 			xbmc.playSFX(SOUND_INCALL)
 		elif sys.argv[1] == "callend":
 			if tts_stop == "true": xbmc.stopSFX()
 			if media_unpause == "true": play()
 			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "CALL RELEASE")')
+			if debug == "true": xbmc.log('ALICEVOX -> xbmc.playSFX: '+sys.argv[1], 2)
 			xbmc.playSFX(SOUND_CALLEND)
 		elif sys.argv[1] == "batlow":
 			if tts_stop == "true": xbmc.stopSFX()
 			if media_unpause == "true": play()
 			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "BATTERY PHONE IS LOW")')
+			if debug == "true": xbmc.log('ALICEVOX -> xbmc.playSFX: '+sys.argv[1], 2)
 			xbmc.playSFX(SOUND_BATLOW)
 		elif sys.argv[1] == "STOP": xbmc.stopSFX()
-		else: xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, command '+sys.argv[1]+' not recognized)')
+			if debug == "true": xbmc.log('ALICEVOX -> cmnd: xbmc.stopSFX', 2)
+		else:
+			if debug == "true": xbmc.log('ERROR, command '+sys.argv[1]+' not recognized', 2)
+			xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, command '+sys.argv[1]+' not recognized)')
 elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 	if debug == "true": xbmc.log('ALICEVOX -> MESSAGE', 2)
 	if len(sys.argv) == 4:
