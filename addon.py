@@ -209,8 +209,8 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		elif sys.argv[5] == "construct":
 			url=LOGO_CONSTUCT
 	if message_type == "0": #classic
-        if debug == "true": xbmc.log('Recieve CLASSIC message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', ' + str(showtime*1000) + ', ' + str(url), 3)
-        xbmc.executebuiltin('XBMC.Notification('+sys.argv[2]+', '+sys.argv[3]+', '+str(showtime*1000)+', '+str(url)+')')
+		if debug == "true": xbmc.log('Recieve CLASSIC message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', ' + str(showtime*1000) + ', ' + str(url), 3)
+		xbmc.executebuiltin('XBMC.Notification('+sys.argv[2]+', '+sys.argv[3]+', '+str(showtime*1000)+', '+str(url)+')')
 	if message_type == "1": #xbmcgui
         if debug == "true": xbmc.log('Recieve XBMCGUI message: ', 3)
         #-align center-
