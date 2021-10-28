@@ -133,7 +133,7 @@ def play():
 
 def pause():
     if debug == "true": xbmc.log('ALICEVOX -> cmd:pause', 2)
-	if not isPlaybackPaused():
+    if not isPlaybackPaused():
 		if debug == "true": xbmc.log('ALICEVOX -> paused', 2)
 		xbmc.Player().pause() #trigger
 
