@@ -248,7 +248,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
         showtime = float(sys.argv[6])
         url=sys.argv[7]
-        if debug == "true": xbmc.log('Recieve PIC: ' + url + ', shown time ' + str(showtime*1000) + 'ms', 0)
+        if debug == "true": xbmc.log('Recieve PIC: ' + url + ', shown time ' + str(showtime*1000) + 'ms', 1)
         if sys.argv[7] == "mdm":
                 url=LOGO_MDM
         elif sys.argv[7] == "ir":
@@ -286,8 +286,8 @@ else:
 
 
 
-#xbmc.LOGDEBUG = 0
-#xbmc.LOGINFO = 1
+#xbmc.LOGDEBUG = 0 //to output need to enable debug logging on kodi ui 
+#xbmc.LOGINFO = 1  //to output need to enable debug logging on kodi ui 
 #xbmc.LOGNOTICE = 2
 #xbmc.LOGWARNING = 3
 #xbmc.LOGERROR = 4
