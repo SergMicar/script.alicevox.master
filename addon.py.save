@@ -22,7 +22,7 @@ addonname = addon.getAddonInfo('name')
 addon_dir = addon.getAddonInfo('path')
 
 LOGO_MDM = os.path.join(addon_dir, 'resources', 'img', "mdm.png")
-LOGO_IR = os.path.join(addon_dir, 'resources', 'img', "ir_received.png")
+
 LOGO_PHONE = os.path.join(addon_dir, 'resources', 'img', "phone.png")
 LOGO_RETROPHONE = os.path.join(addon_dir, 'resources', 'img', "retro_phone.png")
 LOGO_CALLOUTGOING = os.path.join(addon_dir, 'resources', 'img', "call_outgoing.png")
@@ -89,7 +89,7 @@ dialog = xbmcgui.Dialog() #Kodi dialog class
 
 wid = xbmcgui.getCurrentWindowId()
 window = xbmcgui.Window(wid)
-
+	
 
 
 
@@ -183,8 +183,6 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		url=sys.argv[5]
 		if sys.argv[5] == "mdm":
 			url=LOGO_MDM
-		elif sys.argv[5] == "ir":
-			url=LOGO_IR
 		elif sys.argv[5] == "phone":
 			url=LOGO_PHONE
 		elif sys.argv[5] == "retro_phone":
@@ -243,8 +241,6 @@ elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
         url=sys.argv[7]
         if sys.argv[7] == "mdm":
                 url=LOGO_MDM
-	elif sys.argv[7] == "ir":
-		url=LOGO_IR
         elif sys.argv[7] == "phone":
                 url=LOGO_PHONE
         elif sys.argv[7] == "retro_phone":
