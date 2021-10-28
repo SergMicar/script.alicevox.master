@@ -230,7 +230,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		if debug == "true": xbmc.log('ALICEVOX -> Recieve CLASSIC message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms, ' + str(url), 2)
 		xbmc.executebuiltin('XBMC.Notification('+sys.argv[2]+', '+sys.argv[3]+', '+str(showtime*1000)+', '+str(url)+')')
 	if message_type == "1": #xbmcgui
-		if debug == "true": xbmc.log('ALICEVOX -> Recieve XBMCGUI message: ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms', 2)
+		if debug == "true": xbmc.log('ALICEVOX -> Recieve XBMCGUI message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms', 2)
 		#-align center-
 		#image = xbmcgui.ControlImage(i_pos_x, i_pos_y, i_width, i_height, LOGO_CONSTUCT) # X Y LeftUp & "width" "height"
 		#textbox = xbmcgui.ControlTextBox(t_pos_x, t_pos_y, t_width, t_height, font=message_size, textColor=colors[int(message_color)])
