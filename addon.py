@@ -230,21 +230,21 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 			window.removeControl(textbox) #textbox.setText("")
 			window.removeControl(image) #image.setImage("", False)
 	if message_type == "2": #pyxbmct
-        if debug == "true": xbmc.log('Recieve PYXBMCT message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', ' + str(showtime*1000), 3)
-        window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
-        #window = pyxbmct.BlankDialogWindow() #transparent
-        #window = pyxbmct.AddonFullWindow(sys.argv[2])
-        #window = pyxbmct.BlankFullWindow()
-        window.setGeometry(650, 170, 1, 5) #-Set the window "width", "height" and the grid resolution: 2 rows, 3 columns
-        image = pyxbmct.Image(url)
-        message = pyxbmct.Label(sys.argv[3], alignment=pyxbmct.ALIGN_CENTER, font=message_size, textColor=colors[int(message_color)])
-        #message = pyxbmct.TextBox(sys.argv[3])
-        #message.setAnimations([('WindowOpen', 'effect=fade start=0 end=100 time=2000',), ('WindowClose', 'effect=fade start=100 end=0 time=2000',)])
-        window.placeControl(image, 0, 0) #-Place the img on the window grid
-        window.placeControl(message, 0, 1, rowspan=1, columnspan=4) #-Place the label/textbox on the window grid
-        window.show()
-        time.sleep(showtime)
-        window.close()
+		if debug == "true": xbmc.log('Recieve PYXBMCT message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', ' + str(showtime*1000), 3)
+		window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
+		#window = pyxbmct.BlankDialogWindow() #transparent
+		#window = pyxbmct.AddonFullWindow(sys.argv[2])
+		#window = pyxbmct.BlankFullWindow()
+		window.setGeometry(650, 170, 1, 5) #-Set the window "width", "height" and the grid resolution: 2 rows, 3 columns
+		image = pyxbmct.Image(url)
+		message = pyxbmct.Label(sys.argv[3], alignment=pyxbmct.ALIGN_CENTER, font=message_size, textColor=colors[int(message_color)])
+		#message = pyxbmct.TextBox(sys.argv[3])
+		#message.setAnimations([('WindowOpen', 'effect=fade start=0 end=100 time=2000',), ('WindowClose', 'effect=fade start=100 end=0 time=2000',)])
+		window.placeControl(image, 0, 0) #-Place the img on the window grid
+		window.placeControl(message, 0, 1, rowspan=1, columnspan=4) #-Place the label/textbox on the window grid
+		window.show()
+		time.sleep(showtime)
+		window.close()
 elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
         showtime = float(sys.argv[6])
         url=sys.argv[7]
