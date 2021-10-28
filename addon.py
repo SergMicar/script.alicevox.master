@@ -188,7 +188,8 @@ if len(sys.argv) == 2:
 			if tts_notification == "true": xbmc.executebuiltin('XBMC.Notification(Built-in phrase called, "BATTERY PHONE IS LOW")')
 			if debug == "true": xbmc.log('ALICEVOX -> xbmc.playSFX: '+sys.argv[1], 2)
 			xbmc.playSFX(SOUND_BATLOW)
-		elif sys.argv[1] == "STOP": xbmc.stopSFX()
+		elif:
+			sys.argv[1] == "STOP": xbmc.stopSFX()
 			if debug == "true": xbmc.log('ALICEVOX -> cmnd: xbmc.stopSFX', 2)
 		else:
 			if debug == "true": xbmc.log('ERROR, command '+sys.argv[1]+' not recognized', 2)
