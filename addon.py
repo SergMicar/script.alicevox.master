@@ -277,9 +277,9 @@ elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
                 url=LOGO_MDM
         elif sys.argv[7] == "ir":
                 url=LOGO_IR
-        elif sys.argv[5] == "mqtt":
+        elif sys.argv[7] == "mqtt":
                 url=LOGO_MQTT
-        elif sys.argv[5] == "mqtt_err":
+        elif sys.argv[7] == "mqtt_err":
                 url=LOGO_MQTTERR
         elif sys.argv[7] == "phone":
                 url=LOGO_PHONE
