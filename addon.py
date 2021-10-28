@@ -150,6 +150,7 @@ if len(sys.argv) == 2:
 	xbmc.enableNavSounds(True)
 
 	if sys.argv[1] != "MESSAGE":
+		if debug == "true": xbmc.log('ALICEVOX -> !MESSAGE: '+sys.argv[1], 2)
 		if "/cms/cached/voice/" in sys.argv[1]:
 			if tts_stop == "true": xbmc.stopSFX()
 			if media_unpause == "true": play()
@@ -184,6 +185,7 @@ if len(sys.argv) == 2:
 		elif sys.argv[1] == "STOP": xbmc.stopSFX()
 		else: xbmc.executebuiltin('XBMC.Notification('+addonname+': ERROR, command '+sys.argv[1]+' not recognized)')
 elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
+	if debug == "true": xbmc.log('ALICEVOX -> MESSAGE', 2)
 	if len(sys.argv) == 4:
 		showtime = 5
 		url=LOGO_MDM
