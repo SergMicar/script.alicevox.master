@@ -209,7 +209,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		elif sys.argv[5] == "construct":
 			url=LOGO_CONSTUCT
 	if message_type == "0": #classic
-		if debug == "true": xbmc.log('Recieve CLASSIC message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', ' + str(showtime*1000) + ', ' + str(url), 3)
+		if debug == "true": xbmc.log('Recieve CLASSIC message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + 'ms, ' + str(url), 3)
 		xbmc.executebuiltin('XBMC.Notification('+sys.argv[2]+', '+sys.argv[3]+', '+str(showtime*1000)+', '+str(url)+')')
 	if message_type == "1": #xbmcgui
 		if debug == "true": xbmc.log('Recieve XBMCGUI message: ', 3)
@@ -220,7 +220,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		image = xbmcgui.ControlImage(i_pos_x, i_pos_y, i_width, i_height, LOGO_CONSTUCT) # X Y LeftUp & "width of control" "height of control"
 		textbox = xbmcgui.ControlTextBox(t_pos_x, t_pos_y, t_width, t_height, font=message_size, textColor=colors[int(message_color)])
         if wid == 10000 or wid == 10025 or wid == 10028 or wid == 10500 or wid == 10502 or wid == 10600 or wid == 12005:
-			if debug == "true": xbmc.log('Allowed window id found: ' + wid + ', ' + sys.argv[3] + ', ' + str(showtime*1000), 3)
+			if debug == "true": xbmc.log('Allowed window id found: ' + wid + ', ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + 'ms', 3)
 			window = xbmcgui.Window(wid)
 			window.addControl(textbox)
 			window.addControl(image)
@@ -230,7 +230,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 			window.removeControl(textbox) #textbox.setText("")
 			window.removeControl(image) #image.setImage("", False)
 	if message_type == "2": #pyxbmct
-		if debug == "true": xbmc.log('Recieve PYXBMCT message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', ' + str(showtime*1000), 3)
+		if debug == "true": xbmc.log('Recieve PYXBMCT message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + 'ms', 3)
 		window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
 		#window = pyxbmct.BlankDialogWindow() #transparent
 		#window = pyxbmct.AddonFullWindow(sys.argv[2])
@@ -248,7 +248,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
         showtime = float(sys.argv[6])
         url=sys.argv[7]
-        if debug == "true": xbmc.log('Recieve PIC: ' + url + ', ' + str(showtime*1000), 3)
+        if debug == "true": xbmc.log('Recieve PIC: ' + url + ', shown time ' + str(showtime*1000) + 'ms', 0)
         if sys.argv[7] == "mdm":
                 url=LOGO_MDM
         elif sys.argv[7] == "ir":
