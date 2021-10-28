@@ -227,10 +227,10 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 		elif sys.argv[5] == "construct":
 			url=LOGO_CONSTUCT
 	if message_type == "0": #classic
-		if debug == "true": xbmc.log('ALICEVOX -> Recieve CLASSIC message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms, ' + str(url), 2)
+		if debug == "true": xbmc.log('ALICEVOX -> Recieve CLASSIC message -> Title:' + sys.argv[2] + ', Body:' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms, ' + str(url), 2)
 		xbmc.executebuiltin('XBMC.Notification('+sys.argv[2]+', '+sys.argv[3]+', '+str(showtime*1000)+', '+str(url)+')')
 	if message_type == "1": #xbmcgui
-		if debug == "true": xbmc.log('ALICEVOX -> Recieve XBMCGUI message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms', 2)
+		if debug == "true": xbmc.log('ALICEVOX -> Recieve XBMCGUI message -> Image:' + url + ', Body:' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms', 2)
 		#-align center-
 		#image = xbmcgui.ControlImage(i_pos_x, i_pos_y, i_width, i_height, LOGO_CONSTUCT) # X Y LeftUp & "width" "height"
 		#textbox = xbmcgui.ControlTextBox(t_pos_x, t_pos_y, t_width, t_height, font=message_size, textColor=colors[int(message_color)])
@@ -248,7 +248,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 			window.removeControl(textbox) #textbox.setText("")
 			window.removeControl(image) #image.setImage("", False)
 	if message_type == "2": #pyxbmct
-		if debug == "true": xbmc.log('ALICEVOX -> Recieve PYXBMCT message: ' + sys.argv[2] + ', ' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms', 2)
+		if debug == "true": xbmc.log('ALICEVOX -> Recieve PYXBMCT message -> Logo:' + url + 'Title:' + sys.argv[2] + ', Body:' + sys.argv[3] + ', shown time ' + str(showtime*1000) + ' ms', 2)
 		window = pyxbmct.AddonDialogWindow(sys.argv[2]) #-Create a window instance
 		#window = pyxbmct.BlankDialogWindow() #transparent
 		#window = pyxbmct.AddonFullWindow(sys.argv[2])
