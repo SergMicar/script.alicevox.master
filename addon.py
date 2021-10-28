@@ -248,7 +248,7 @@ elif len(sys.argv) > 2 and sys.argv[1] == "MESSAGE":
 elif len(sys.argv) > 2 and sys.argv[1] == "PIC":
         showtime = float(sys.argv[6])
         url=sys.argv[7]
-        if debug == "true": xbmc.log('Recieve PIC: ' + url + ', shown time ' + str(showtime*1000) + 'ms', 1)
+        if debug == "true": xbmc.log('Recieve PIC: ' + url + ', shown time ' + str(showtime*1000) + 'ms', 2)
         if sys.argv[7] == "mdm":
                 url=LOGO_MDM
         elif sys.argv[7] == "ir":
