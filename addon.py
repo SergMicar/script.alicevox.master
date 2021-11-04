@@ -60,9 +60,20 @@ message_size = settings.getSetting("message_size")           #str
 message_color = settings.getSetting("message_color")         #str
 debug = settings.getSetting("debug")                         #bool->str
 
-xbmc.log('ALICEVOX call, enable debug in plugin settings if you need more information', 2)
-if debug == "true": xbmc.log('ALICEVOX CONFIG -> tts_notification(on_message_arrived)='+tts_notification+', notification_time='+notification_time+', tts_stop='+tts_stop+', media_unpause='+media_unpause, 2)
-if debug == "true": xbmc.log('ALICEVOX CONFIG -> message_type='+message_type+', message_size='+message_size+', message_color='+message_color, 2)
+if debug == "false": xbmc.log('ALICEVOX call, enable debug in plugin settings if you need more information', 2)
+if debug == "true":
+    m_type = "Unknown"
+    if message_type == "0": m_type = "classic"
+    if message_type == "1": m_type = "xbmcgui"
+    if message_type == "2": m_type = "pyxbmct"
+    m_color = "Unknown"
+    if message_color == "0": m_color = "red"
+    if message_color == "1": m_color = "yellow"
+    if message_color == "2": m_color = "green"
+    if message_color == "3": m_color = "blue"
+    if message_color == "4": m_color = "purple"
+    xbmc.log('ALICEVOX CONFIG -> classic_message_on_tts_arrived='+tts_notification+', notification_time='+notification_time+', tts_stop='+tts_stop+', media_unpause='+media_unpause, 2)
+    xbmc.log('ALICEVOX CONFIG -> message_type='+m_type+', message_size='+message_size+', message_color='+m_color, 2)
 
 #0xTTRRGGBB where T is the transparency value, R is red, G is green and as you guessed B is blue
 colors = ['0xFFFF0000', '0xFFFFD700', '0xFF00FF00', '0xFF0000FF','0xFF8000FF']
