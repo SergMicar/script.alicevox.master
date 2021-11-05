@@ -1,5 +1,10 @@
+v3.1.1 (05.11.2021)
+- add debug messages
+- add some pictures
+
 v3.0.0 (23.05.2020)
 - add ability to plugin settings
+- if message "ringtone" is arrives the previous message is keep on
 
 v2.1.2 (15.04.2020)
 bugfix
